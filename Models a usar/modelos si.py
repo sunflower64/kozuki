@@ -34,6 +34,7 @@ class Categoria(models.Model):
 class Producto(models.Model):
     codigo_prod = models.IntegerField(primary_key=True, verbose_name='Id Producto')
     nombre_prod = models.CharField( max_length=15, verbose_name='Nombre Producto')
+    descripcion_prod = models.CharField( max_length=30, verbose_name='Decripcion Producto')
     marca_prod = models.CharField( max_length=15, verbose_name='Nombre marca producto')
     precio_prod = models.IntegerField(verbose_name='Precio Producto')
     calificacion = models.IntegerField(blank=True, null=True,  verbose_name='Nota Producto')
