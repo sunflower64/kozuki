@@ -1,0 +1,205 @@
+{% extends 'base.html' %}{% load static %}
+{% block content %}
+
+
+{% load static %}
+
+<!-------------------------------- producto -->
+<header>
+    <div class="container mx-auto px-6 py-10 justify-center">
+
+        <!---------- barra busqueda -->
+        <div class=" flex w-1/2rounded-lg bg-white border border-pink-700 shadow-md md:p-2">
+            <select class="hidden p-3 rounded-full bg-transparent md:block md:p-4" name="domain" id="domain">
+                <option value="design">Juguetes </option>
+                <option value="development">Comida enlatada</option>
+                <option value="marketing">Camas</option>
+            </select>
+            <input placeholder="Ejm. hierba gatuna" class="w-full mx-4 p-4 rounded-lg" type="text">
+            <button type="button" title="Compra ahora" class="ml-auto py-3 px-6 rounded-lg text-center transition bg-gradient-to-b from-pink-300 to-purple-400 hover:to-red-300 active:from-purple-700 focus:from-pink-400 md:px-12">
+                <span class="hidden text-xl text-yellow-900 font-semibold md:block">
+                    buscar
+                </span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 mx-auto text-yellow-900 md:hidden" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                </svg>
+            </button>
+        </div>
+
+        <nav  class="flex justify-center items-center mt-4 shrink-0">
+            <div class="flex flex-row  ">
+                <a class="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0" href="{% url 'home' %}">inicio </a>
+                <p class="mt-3 mx sm:mt-0 mx-2">/</p>
+                <a class="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0" href="{% url 'categoriagato' %}">Gatos</a>
+                <p class="mt-3 mx sm:mt-0 mx-2">/</p>
+                <a class="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0" href="{% url 'categoriaperro' %}">Perros</a> 
+                <p class="mt-3 mx sm:mt-0 mx-2">/</p>
+                <a class="mt-3 text-gray-600 underline sm:mx-3 sm:mt-0" href="">Producto</a>  
+            </div>
+        </nav>
+
+    </div>
+</header>
+
+
+<!--------------------------- PRODUCTO --->
+
+<div class="my-8 mx-10">
+    <div class="container mx-auto px-6">
+        <div class="md:flex md:items-center">
+            <div class="w-full h-64 md:w-1/2 lg:h-96 shadow-md">
+
+                <img class="h-full w-full rounded-md object-cover max-w-lg mx-auto" src="{% static "img/productos/producto1.jpg"%}" alt="Producto">
+
+                
+
+            </div>
+            
+            <div class="w-full max-w-lg mx-auto mt-5 md:ml-8 md:mt-0 md:w-1/2"> 
+                
+                <span class="flex flex-row w-full block"  > <!-- CALIFICACION -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-purple-500 hover:text-red-400 transition duration-100 cursor-pointer" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-purple-500 hover:text-red-400 transition duration-100 cursor-pointer" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-purple-500 hover:text-red-400 transition duration-100 cursor-pointer" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-purple-500 hover:text-red-400 transition duration-100 cursor-pointer" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-red-500 hover:text-red-400 transition duration-100 cursor-pointer" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
+                    </svg>
+                </span>
+
+                <h3 class="text-gray-700 uppercase text-2xl" >{{ producto.nombre_producto }}</h3>  <!---------- NOMBRE PRODUCTO -->
+
+                <span class="text-gray-500 text-xl mt-3 mr-10">{{ producto.marca_producto }}</span> <!---------------------- MARCA -->
+
+                <!--CATEGORIA-->
+                <button class="text-white text-xs font-bold rounded-full bg-indigo-500 inline-block mt-4 ml-4 py-1.5 px-4 cursor-pointer">Categoria</button>
+
+
+                <hr class="my-3">
+
+                <div class="mt-2">
+                    <label class="text-gray-700 text-md" for="count">Cantidad({{producto.stock_producto}}):</label>
+                    <div class="flex items-center mt-1">
+                        <button class="text-gray-500 focus:outline-none focus:text-gray-600">
+                            <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </button>
+                        <span class="text-gray-700 text-lg mx-2">1</span>
+                        <button class="text-gray-500 focus:outline-none focus:text-gray-600">
+                            <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="my-5">        <!-- DESCRIPCION -->
+                    <h1>{{producto.descripcion_producto}}</h1>
+
+                </div>
+                <div class="mt-3">
+                    <label class="text-gray-700 text-2xl" for="count">${{producto.precio_producto}}</label> <!---------- PRECIO -->
+
+                </div>
+                <div class="flex items-center mt-6">
+                    <button href="#" class="shadow-lg w-full text-black bg-blue-700 hover:bg-pink-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center transition bg-gradient-to-b from-pink-300 to-purple-400 hover:to-red-300 active:from-purple-700 focus:from-pink-400">Agregar al carrito</button>
+
+                </div>
+            </div>
+        </div>
+        <div class="mt-16"> <!--------------- PRODUCTOS RECOMENDADOS-->
+
+            <h3 class="text-gray-600 text-2xl font-medium">Productos Recomendados</h3>
+
+
+            <div class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6 ">
+                
+                <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden transform transition duration-500 hover:scale-105">
+                    <div class="px-5 ">
+                        <h3 class="text-gray-700 uppercase">Marca</h3>
+                        
+                    </div>
+                    <div class="flex items-end justify-end h-56 w-full bg-cover" style="background-image:url(static/img/productos/producto3.jpg)">
+                        <button class="  shadow-lg  p-1 rounded-lg bg-pink-600 text-white mx-5 -mb-4 hover:bg-pink-700 focus:outline-none  ">
+                            ver producto
+                        </button>
+                    </div>
+                    <div class="px-5 py-3">
+
+                        <h3 class="text-xl text-gray-700 text-bold uppercase">Nombre Producto</h3>
+                        
+                        <span class="text-gray-500 text-bold text-xl mt-2">$$$$$$$</span>
+
+                    </div>
+                </div>
+
+                <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden transform transition duration-500 hover:scale-105">
+                    <div class="px-5 ">
+                        <h3 class="text-gray-700 uppercase">Marca</h3>
+                        
+                    </div>
+                    <div class="flex items-end justify-end h-56 w-full bg-cover" style="background-image:url(static/img/productos/producto6.jpg)">
+                        <button class="  shadow-lg  p-1 rounded-xl bg-pink-600 text-white mx-5 -mb-4 hover:bg-pink-700 focus:outline-none  ">
+                            ver producto
+                        </button>
+                    </div>
+                    <div class="px-5 py-3">
+
+                        <h3 class="text-xl text-gray-700 text-bold uppercase">Nombre Producto</h3>
+                        
+                        <span class="text-gray-500 text-bold text-xl mt-2">$$$$$$$</span>
+                              
+                    </div>
+                </div>
+
+                <div class="w-full max-w-sm mx-auto rounded-xl shadow-md overflow-hidden transform transition duration-500 hover:scale-105">
+                    <div class="px-5 ">
+                        <h3 class="text-gray-700 uppercase">Marca</h3>
+                        
+                    </div>
+                    <div class="flex items-end justify-end h-56 w-full bg-cover" style="background-image:url(static/img/productos/producto4.jpg)">
+                        <button class="  shadow-lg  p-1 rounded-xl bg-pink-600 text-white mx-5 -mb-4 hover:bg-pink-700 focus:outline-none  ">
+                            ver producto
+                        </button>
+                    </div>
+                    <div class="px-5 py-3">
+
+                        <h3 class="text-xl text-gray-700 text-bold uppercase">Nombre Producto</h3>
+                        
+                        <span class="text-gray-500 text-bold text-xl mt-2">$$$$$$$</span>
+                          
+                    </div>
+                </div>
+
+                <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden transform transition duration-500 hover:scale-105">
+                    <div class="px-5 ">
+                        <h3 class="text-gray-700 uppercase">Marca</h3>
+                        
+                    </div>
+                    <div class="flex items-end justify-end h-56 w-full bg-cover" style="background-image:url(static/img/productos/producto2.jpg)">
+                        <button class="  shadow-lg  p-1 rounded-xl bg-pink-600 text-white mx-5 -mb-4 hover:bg-pink-700 focus:outline-none  ">
+                            ver producto
+                        </button>
+                    </div>
+                    <div class="px-5 py-3">
+
+                        <h3 class="text-xl text-gray-700 text-bold uppercase">Nombre Producto</h3>
+                        
+                        <span class="text-gray-500 text-bold text-xl mt-2">$$$$$$$</span>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+
+
+{% endblock %}

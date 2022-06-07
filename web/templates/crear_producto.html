@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container mx-auto bg-gray-100">
+
+
+<form class="grid grid-flow-row justify-center text-center" action="{% url 'guardar_producto' %}" method="POST">
+<h1 class="text-2xl my-5 "> Crear Nuevo Producto: </h1>
+
+    <hr class="my-2">
+
+    {% csrf_token %}
+
+    <label class="block uppercase tracking-wide text-gray-700 text-md font-bold mb-2" for="nombre_producto">Nombre del Producto: </label>
+    <input class="my-1 border p-1 border-2 border-pink-800 rounded-lg" type="text" name="nombre_producto" placeholder='Ingresa el nombre del producto'/>
+
+    <label class="block uppercase tracking-wide text-gray-700 text-md font-bold mb-2" for="marca_producto">Marca del Producto: </label>
+    <input class="my-1 border p-1  border-2 border-pink-800 rounded-lg" type="text" name="marca_producto" placeholder='Ingresa la marca del producto'/>
+
+    <label class="block uppercase tracking-wide text-gray-700 text-md font-bold mb-2" for="descripcion_producto">Descripcion del Producto: </label>
+    <input class="my-1 border p-1  border-2 border-pink-800 rounded-lg" type="text" name="descripcion_producto" placeholder='Ingresa la descripcion del producto'/>
+
+    <label class="block uppercase tracking-wide text-gray-700 text-md font-bold mb-2" for="precio_producto">Precio del Producto: </label>
+    <input class="my-1 border p-1  border-2 border-pink-800 rounded-lg" type="number" name="precio_producto" placeholder='Ingresa el precio del producto'/>
+
+    <label class="block uppercase tracking-wide text-gray-700 text-md font-bold mb-2" for="stock_producto">Stock del Producto: </label>
+    <input class="my-1 border p-1  border-2 border-pink-800 rounded-lg" type="number" name="stock_producto" placeholder='Ingresa el stock del producto'/>
+    <hr class="my-2">
+
+    <input class="my-10 border border-4 border-pink-700 rounded-lg hover:bg-pink-700 " type="submit" value="Guardar"/>
+</form>
+
+
+</div>
+{% endblock %}
