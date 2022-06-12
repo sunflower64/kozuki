@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<div class="flex justify-between items-center">
+    <h1 class="px-2 py-4 text-2xl"> Lista de productos </h1>
+    <a class="text-xl underline mx-4" href="{% url 'crear_producto' %}"> Crear Producto</a>
+</div>
+
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg px-2">
+<table class="w-full text-sm text-left text-gray-500">
+    <thead class="text-xs text-gray-700 uppercase bg-gray-300">
+    <tr>
+    <th scope="col" class="px-6 py-3">Codigo</th>
+    <th scope="col" class="px-6 py-3">Nombre</th>
+    <th scope="col" class="px-6 py-3">Marca</th>
+    <th scope="col" class="px-6 py-3">Precio</th>
+    <th scope="col" class="px-6 py-3 text-center">Acciones
+    </th>
+    </tr>
+    </thead>
+    
+    <tbody>
+    {% for producto in productos %}
+
+    <tr class="bg-white border-b">
+    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"> {{producto.id}} </th>
+    <td class="px-6 py-4"> {{producto.nombre_producto}} </td>
+    <td class="px-6 py-4">{{producto.marca_producto}}</td>
+    <td class="px-6 py-4">{{producto.precio_producto}}</td>
+    <td class="px-6 py-4 text-center">
+        <a href="{% url 'producto' producto.id %}" class="font-medium text-blue-600 hover:underline">Ver</a>
+        <a href="{% url 'editar' producto.id %}" class="font-medium text-blue-600 hover:underline">Editar</a>
+        <a href="{% url 'borrar_producto' producto.id %}" class="font-medium text-blue-600 hover:underline">Borrar</a>
+    </td>
+    </tr>
+
+    {% endfor %}
+    </tbody>
+</table>
+</div>
+
+
+
+
+{% endblock %}
