@@ -1,0 +1,180 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% csrf_token %}
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="{% static '/js/api_productos.js' %}"></script> 
+
+<!-- CONSUMO API: LISTAR PRODUCTOS-->
+<script>
+
+$(document).ready(function(){
+ 
+
+    function listarProducto(){
+        $.ajax({
+            url:urlRestListar,
+            dataType:'JSON',
+            success:function(data){
+                for(var i=0; i<data.length; i++){
+                    var fila=$('<tr>'+
+                '<td id="varId" class=" py-4 mx-2" ># '+data[i].id  +'</td>'+
+                '<td class=" py-4 mx-2" >'+data[i].nombre_producto  +'</td>'+
+                '<td class=" py-4 mx-2" >'+data[i].marca_producto +'</td>'+
+                '<td class=" py-4 mx-2" >'+data[i].descripcion_producto  +'</td>'+
+                '<td class=" py-4 mx-2" >$ '+data[i].precio_producto  +'</td>'+
+                '<td class=" py-4 mx-2" >'+data[i].stock_producto  +'</td>'+
+                '<td class="  py-4 mx-2" ><button class="activar_formEditar" onclick="editarProducto('+data[i].id+')"> EDITAR </button></td>'+
+                '<td class=" py-4 mx-2" ><button onclick="borrarObjeto('+data[i].id+')"> BORRAR </button></td>'+
+                '</tr>');       
+                    $('#tabla_productos').append(fila);
+                }
+            }
+        });
+    };
+
+    listarProducto();
+    var formEditar = document.getElementById("form_editar_producto");
+    $(".activar_formEditar").click(function(){
+        formEditar.classList.remove("hidden");
+    });
+
+
+});
+
+</script>
+
+<!-- CONSUMO API: EDITAR PRODUCTO-->
+<script>
+
+    var urlRestDetalleProd='http://127.0.0.1:8000/api/detalle_producto';
+    function editarProducto(idProd){
+        $.ajax({
+            url: urlRestDetalleProd+'/'+idProd,
+            typeof:'GET',
+            datatype:'JSON',
+            success: function(response){
+                
+            $('#nombreProd').val(response.nombre_producto);
+            $('#marcaProd').val(response.marca_producto);
+            $('#descProd').val(response.descripcion_producto);
+            $('#precioProd').val(response.precio_producto);
+            $('#stockProd').val(response.stock_producto);
+
+            $('#form_editar_producto').append(detalle);
+            var btn_actualizar=$('<button id="btn_guardar" onclick="actualizarProd('+ response.id +')" type="submit" class=" border border-4 border-pink-700 rounded-lg hover:bg-pink-700 ">actualizar</button>');
+            $('#btn_act').html(btn_actualizar);
+            }
+
+        });
+    }
+    function actualizarProd(idProd){
+        var varId=idProd
+        var datosProd = {
+        nombre_producto: $('#nombreProd').val(),
+        marca_producto: $('#marcaProd').val(),
+        descripcion_producto:$('#descProd').val(),
+        precio_producto:$('#precioProd').val(),
+        stock_producto:$('#stockProd').val()
+        
+        };
+        var datosProdJson = JSON.stringify(datosProd);
+        $.ajax({
+            url:urlRestDetalleProd+'/'+idProd,
+            type: 'PUT',
+            dataType:'JSON',
+            data: datosFormJson,
+            contentType:'application/json',
+            success: function(response){
+
+            }
+
+        });
+    }
+
+</script>
+
+<!-- CONSUMO API: BORRAR PRODUCTO-->
+<script>
+
+   function borrarObjeto(idProd){
+    var datos = {
+        id: idProd   };
+
+    var datosJson = JSON.stringify(datos);
+   
+    $.ajax({
+        url: 'http://127.0.0.1:8000/api/detalle_producto/'+idProd,
+        type:'DELETE',
+        data: datosJson,
+        dataType:'JSON',
+        contentType:'application/json',
+        success: function(response){
+            listarProducto();
+
+        }
+
+    });
+}
+</script>
+{% csrf_token %}
+<div class="flex justify-between items-center">
+    <h1 class="px-2 py-4 text-2xl"> Lista de productos </h1>
+    <a class="text-xl underline mx-4" href="{% url 'crearProductos' %}"> Crear Producto</a>
+</div>
+ <!-- TABLA LISTA PRODUCTOS -->
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg px-2">
+    <table class="w-full text-sm text-left text-gray-500" > 
+    <thead class="text-xs text-gray-700 uppercase bg-gray-300">
+    <tr>
+    <th scope="col " class="">Codigo</th>
+    <th scope="col" class="">Nombre</th>
+    <th scope="col" class="">Marca</th>
+    <th scope="col" class="">Descripcion</th>
+    <th scope="col" class="">Precio</th>
+    <th scope="col" class="">Cantidad</th>
+    <th scope="col" class="">acciones </th>
+    <th scope="col" class=""> </th>
+    </tr>
+    </thead>
+    <tbody id="tabla_productos">
+
+    <!--<td class="px-6 py-4" id="id"> </td> -->
+    
+    </tbody>
+</table>
+</div>
+<!-----------------TABLA EDITAR PRODUCTO ------------------------>
+
+
+<div id="form_editar_producto"  class=" hidden grid grid-flow-row justify-center text-center">
+
+    <form  class=" grid grid-flow-row justify-center text-center" action="{% url 'listarProductos' %}" method="put">
+        <h1 class="text-2xl my-5 "> Editar producto </h1>
+    <hr class="my-2">
+    
+    <label class="block uppercase tracking-wide text-gray-700 text-md font-bold my-2" for="nombre_producto">Nombre del Producto: </label>
+    <input id="nombreProd" class="my-1 border p-1 border-2 border-pink-800 rounded-lg" type="text" name="nombre_producto" placeholder='Ingresa el nombre del producto'/>
+
+    <label class="block uppercase tracking-wide text-gray-700 text-md font-bold my-2" for="marca_producto">Marca del Producto: </label>
+    <input id="marcaProd" class="my-1 border p-1  border-2 border-pink-800 rounded-lg" type="text" name="marca_producto" placeholder='Ingresa la marca del producto'/>
+
+    <label class="block uppercase tracking-wide text-gray-700 text-md font-bold my-2" for="descripcion_producto">Descripcion del Producto: </label>
+    <input id="descProd" class="my-1 border p-1  border-2 border-pink-800 rounded-lg" type="text" name="descripcion_producto" placeholder='Ingresa la descripcion del producto'/>
+
+    <label class="block uppercase tracking-wide text-gray-700 text-md font-bold my-2" for="precio_producto">Precio del Producto: </label>
+    <input id="precioProd" class="my-1 border p-1  border-2 border-pink-800 rounded-lg" type="number" name="precio_producto" placeholder='Ingresa el precio del producto'/>
+
+    <label class="block uppercase tracking-wide text-gray-700 text-md font-bold my-2" for="stock_producto">Stock del Producto: </label>
+    <input id="stockProd" class="my-1 border p-1  border-2 border-pink-800 rounded-lg" type="number" name="stock_producto" placeholder='Ingresa el stock del producto'/>
+
+    <hr class="my-2">
+
+    <div id="btn_act" class="m-10"></div>
+
+    </form>
+</div>
+
+<!-- <button id="" onclick="" type="submit" class=" border border-4 border-pink-700 rounded-lg hover:bg-pink-700 "  value="Actualizar Producto">actualizar</button> -->
+
+{% endblock %}
