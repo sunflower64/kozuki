@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class RestProductoConfig(AppConfig):
+class AppRestProductosConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'rest_producto'
+    name = 'app_rest_productos'

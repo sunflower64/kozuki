@@ -1,20 +1,30 @@
+from django.shortcuts import render
+from rest_framework import status
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework.parsers import JSONParser 
+from django.views.decorators.csrf import csrf_exempt
+from .serializers import ProductoSerializer
+
 from re import template
 from django.views.generic import TemplateView
 from django.shortcuts import render, HttpResponse, redirect
-
 from web.models import Producto
-# Create your views here.
 
 home = TemplateView.as_view(template_name="index.html")
 tarjeta = TemplateView.as_view(template_name="tarjeta.html")
 login = TemplateView.as_view(template_name="login.html")
 categoriaperro = TemplateView.as_view(template_name="cat_perro.html")
 categoriagato = TemplateView.as_view(template_name="cat_gato.html")
+
+productos = TemplateView.as_view(template_name="principal_productos.html")
 #CRUD
 crud = TemplateView.as_view(template_name='productos_crud.html')
 crear_producto = TemplateView.as_view(template_name="crear_producto.html")
 ver_producto = TemplateView.as_view(template_name="producto.html")
 editar_producto = TemplateView.as_view(template_name="editar.html")
+
+########################################################################################
 
 def guardar_producto(request):
     if request.method == 'POST':
@@ -41,6 +51,7 @@ def borrar_producto(request, id):
     producto.delete()
 
     return redirect('crud')
+
 def listar_productos(request):
     productos = Producto.objects.all()
 
@@ -82,4 +93,3 @@ def guardar_edicion(request,id):
         return redirect('crud')
     else:
         HttpResponse('<h2>No se pudo agregar los cambios</h2>')
-

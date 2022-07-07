@@ -1,0 +1,381 @@
+{% extends 'base.html' %}{% load static %}
+{% block content %}
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script> 
+
+        // Solicitud GET (Request).
+    fetch('https://catfact.ninja/fact?max_length=80')
+    // Exito
+    .then(response => response.json())  // convertir a json
+    .then(data => mostrarData(data))    //imprimir los datos en la consola
+    .catch(err => console.log('Solicitud fallida', err)); // Capturar errores
+    
+    const mostrarData = (data) =>{
+    console.log(data)
+    let body = ''
+    body = `<h2>${data.fact}</h2>`
+    document.getElementById('fact').innerHTML = body
+    }
+    </script> 
+    
+<!-- TEMPLATE TARJETA PRODUCTO -->
+
+    <template id="tarjeta-producto"> 
+        <div  class="max-w-sm bg-white w-80 shadow-md rounded-xl transform transition duration-500 hover:scale-105 hover:shadow-2xl" >
+            <a href="#">
+                <img id="img-producto" class="shadow-lg  border-gray-700 object-cover w-full rounded-xl border-b" src="{% static "img/productos/producto5.jpg"%}" width="" height="" alt="product image">
+            </a>
+            <div class="m-3 ">
+                <h1 id="nombre-producto" class="text-2xl font-bold text-gray-800 ">  </h1>
+                <h3 id="marca-producto" class="text-gray-500 uppercase "></h3>
+                <div class="flex  items-center text-2xl text-gray-900"> $
+                    <span id="precio-producto" class=" "></span>
+                </div>
+            </div>
+            <button id="btn-tarjeta" href="#" class="btn-tarjeta w-full shadow-lg rounded-b-lg text-black bg-pink-500 hover:bg-pink-600  hover:text-white focus:ring-4 focus:outline-none focus:ring-purlpe-300 font-medium text-sm px-5 py-2.5 text-center  ">Agregar al carrito</button>  
+        </div>
+    </template>
+
+
+<!------------------------------------------------------------ TITULO DE LA SECCION><-->    <!---------------------------------------------------------------BLOQUE DE BUSCADOR CON FONDO  ><-->
+                <div class="relative bg-pink-300">
+                    <!-- consumo de API de facts -->
+
+                    <div class="text-base sm:text-xl md:text-2xl bg-purple-200 text-center pt-5 pb-2 rounded-md shadow-lg">
+                        <h2 id="fact" class=" text-bold animate-bounce">
+                        
+                        </h2>
+                    </div>
+                    <div class="container m-auto px-6 pt-32 md:px-12 lg:pt-[4.8rem] lg:px-7">
+                        <div class="flex items-center flex-wrap px-2 md:px-0">
+                            <div class="relative lg:w-6/12 lg:py-24 xl:py-32">
+                                <h1 class="font-bold text-4xl text-yellow-900 md:text-5xl lg:w-10/12">Estas comprando para Gatitos </h1>
+                                <form action="" class="w-full mt-12">
+                                    <div class="relative flex p-1 rounded-full bg-white border border-yellow-200 shadow-md md:p-2">
+                                        <select class="hidden p-3 rounded-full bg-transparent md:block md:p-4" name="domain" id="domain">
+                                            <option value="design">Juguetes indoor</option>
+                                            <option value="development">Rascadores</option>
+                                            <option value="marketing">Camas</option>
+                                        </select>
+                                        <input placeholder="Ejm. hierba gatuna" class="w-full p-4 rounded-full" type="text">
+                                        <button type="button" title="Compra ahora" class="ml-auto py-3 px-6 rounded-full text-center transition bg-gradient-to-b from-pink-300 to-purple-400 hover:to-red-300 active:from-purple-700 focus:from-pink-400 md:px-12">
+                                            <span class="hidden text-yellow-900 font-semibold md:block">
+                buscar
+                                            </span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 mx-auto text-yellow-900 md:hidden" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </form>
+                                <p class="mt-8  text-2xl text-gray-700 lg:w-20/12">Regalonea a tus amigos peludos!</p>
+                            </div>
+                            <div class="ml-auto -mb-24 lg:-mb-56 lg:w-6/12">
+                                <img src="{% static "img/gatito.png" %}" class="relative w-scren" alt="Perritos" loading="lazy" width="3500"  height="4500">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+<!-----------------------------------------------------------------BLOQUE BANNER  ><-->
+            <div class="col-xs" >    
+                <div class="h-100 flex justify-center items-center" >
+                    <card class="grid grid-cols-12 max-w-5xl mx-8 rounded-xl bg-pink-800"> 
+                        <div class="col-span-4">
+                            <h2 class="font-bold text-3xl text-white ml-10 mt-8"> 
+                                Productos en oferta
+                            </h2>
+                            <p class="font-light text-white text-sm ml-10 mt-5">
+                                
+                            </p>
+                                        <button class="text-white font-semibold ml-10 mt-5 mb-8 group ">
+                                Revisa los descuentos en todo Alimento
+                                <svg xmlns="http://www.w3.org/2000/svg" class="inline-block h-6 w-6 group-hover:translate-x-2 transition delay-100 transition-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                </svg>
+                            </button>       
+                        </div>
+                            <div class="col-span-2 relative">
+                                <img src=""  class="absolute bottom-0 right-0"/>
+                            </div>
+                    </card>
+
+                </div>           
+            </div>
+
+            <br>
+<!------------------------------------------------------- BLOQUE DE  CATEGORIAS-DESPLEGABLE ?-     Y PRODUCTOS/PRECIOS ><-->
+
+            <div class="" id="div_categorias">
+
+                <nav class=" bg-pink-700 border-white-200 px-2 sm:px-4 py-2.5 rounded">
+
+                    <div class=" container flex flex-wrap justify-between mx-screen ">
+                        <div class="flex sm:block md:hidden mx-8 p-4 inline-flex">
+                            <h1 class="text-white text-2xl  " >CATEGORIAS </h1>
+                        </div>
+                        
+                        <button data-collapse-toggle="categorias" type="button" class="inline-flex items-center p-4 ml-3 text-xl text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="categorias" aria-expanded="false">
+                            <svg class="w-8 h-8" fill="white" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
+                            <svg class="hidden w-6 h-6" fill="white" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                        </button>
+                        <div class="hidden w-full md:block md:w-auto " id="categorias">
+                                <ul class="w-screen text-center flex flex-wrap flex-col my-4 md:flex-row md:space-x-8  md:text-xl  ">               
+                                    <li class="">    
+                                        <a href="#" class="w-full block py-2 pr-4 pl-3 text-white hover:bg-purple-100 md:hover:bg-purple-300 md:border-0 md:hover:text-white-700 md:p-0"  >Alimentos</a>
+                                    </li>
+                                    <li class="">    
+                                        <a href="#" class="w-full block py-2 pr-4 pl-3 text-white hover:bg-purple-100 md:hover:bg-purple-300 md:border-0 md:hover:text-white-700 md:p-0"  >Aseo</a>
+                                    </li>
+                                    <li class="">    
+                                        <a href="#" class="w-full block py-2 pr-4 pl-3 text-white hover:bg-purple-100 md:hover:bg-purple-300 md:border-0 md:hover:text-white-700 md:p-0"  >Bocadillos</a>
+                                    </li>
+                                    <li class="">    
+                                        <a href="#" class="w-full block py-2 pr-4 pl-3 text-white hover:bg-purple-100 md:hover:bg-purple-300 md:border-0 md:hover:text-white-700 md:p-0"  >Juguetes terapeuticos</a>
+                                    </li>
+                                    <li class="">    
+                                        <a href="#" class="w-full block py-2 pr-4 pl-3 text-white hover:bg-purple-100 md:hover:bg-purple-300 md:border-0 md:hover:text-white-700 md:p-0"  >Medicinas</a>
+                                    </li>
+                                    <li class="">    
+                                        <a href="#" class="w-full block py-2 pr-4 pl-3 text-white hover:bg-purple-100 md:hover:bg-purple-300 md:border-0 md:hover:text-white-700 md:p-0"  >Collares</a>
+                                    </li>
+                                    <li class="">    
+                                        <a href="#" class="w-full block py-2 pr-4 pl-3 text-white hover:bg-purple-100 md:hover:bg-purple-300 md:border-0 md:hover:text-white-700 md:p-0"  >Arneses</a>
+                                    </li>
+                                    <li class="">    
+                                        <a href="#" class="w-full block py-2 pr-4 pl-3 text-white hover:bg-purple-100 md:hover:bg-purple-300 md:border-0 md:hover:text-white-700 md:p-0"  >Camas</a>
+                                    </li>
+                                    <li class="">    
+                                        <a href="#" class="w-full block py-2 pr-4 pl-3 text-white hover:bg-purple-100 md:hover:bg-purple-300 md:border-0 md:hover:text-white-700 md:p-0"  >Disfraces</a>
+                                    </li>
+                                    <li class="">    
+                                        <a href="#" class="w-full block py-2 pr-4 pl-3 text-white hover:bg-purple-100 md:hover:bg-purple-300 md:border-0 md:hover:text-white-700 md:p-0"  >Peluqueria</a>
+                                    </li>
+                                    <li class="">    
+                                        <a href="#" class="w-full block py-2 pr-4 pl-3 text-white hover:bg-purple-100 md:hover:bg-purple-300 md:border-0 md:hover:text-white-700 md:p-0"  >Jaulas de transporte</a>
+                                    </li>
+                                    <li class="">    
+                                        <a href="#" class="w-full block py-2 pr-4 pl-3 text-white hover:bg-purple-100 md:hover:bg-purple-300 md:border-0 md:hover:text-white-700 md:p-0"  >Estambre</a>
+                                    </li>
+
+                                </ul>
+                        </div>
+                    </div>
+                </nav>
+    
+            </div>
+<!------------------------------------------------------------------------------------- PRODUCTOS-->
+            <div class="grid flex flex-wrap justify-center grid-cols-12 my-10 ">
+                <h1> ola</h1>
+
+                <!------------------------------------------------- PRODUCTOS-->
+                <div id="tarjetas" class=" flex flex-wrap   col-span-12 grid-flow-row justify-center flex-shrink-1  gap-10">
+
+
+                </div> <!--TERMINO PRODUCTOS-->
+            </div>
+    <!--TERMINO PRODUCTOS-->
+
+                <!-- CARRITO -->
+                
+                <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+
+
+                <div class="flex ">
+                    <div x-data="{ dropdownOpen: false }" class="relative w-full ">
+                        
+                        <button @click="dropdownOpen = !dropdownOpen" class="relative block  rounded-md bg-white px-2 pb-1 focus:outline-none flex justify-between ">
+                        
+                          <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart w-5 h-5 m-2">
+                            <circle cx="9" cy="21" r="1"></circle>
+                            <circle cx="20" cy="21" r="1"></circle>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                        </svg>
+                        
+                        </button>
+                        
+
+                        <div x-show="dropdownOpen" @click="dropdownOpen = false" class="fixed inset-0 h-full w-full z-10"></div>
+                        <div x-show="dropdownOpen" class="absolute right-0 mt-2 bg-white rounded-md shadow-lg overflow-hidden z-20" style="width:20rem;">
+                          <!-- para  template  -->
+                            <div class="py-2"> 
+
+                              <div class="p-2 flex bg-white hover:bg-gray-100 cursor-pointer border-b border-gray-100" style=""> 
+                                <div class="p-2 w-12"><img src="https://dummyimage.com/50x50/bababa/0011ff&amp;text=50x50" alt="img product"></div>
+                                <div class="flex-auto text-sm w-32">
+                                    <div class="font-bold">Product 1</div>
+                                    <div class="truncate">Product 1 description</div>
+                                    <div class="text-gray-400">Qt: 2</div>
+                                </div>
+                                <div class="flex flex-col w-18 font-medium items-end">
+                                  <!-- btn quitar  -->
+                                    <div class="w-4 h-4 mb-6 hover:bg-red-200 rounded-full cursor-pointer text-red-700">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2 ">
+                                            <polyline points="3 6 5 6 21 6"></polyline>
+                                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                                            <line x1="10" y1="11" x2="10" y2="17"></line>
+                                            <line x1="14" y1="11" x2="14" y2="17"></line>
+                                        </svg>
+                                        <!-- precio -->
+                                    </div> 
+                                    $12.22</div>
+                            </div>
+
+                            </div>
+                            <a href="#" class="block bg-gray-800 text-white text-center font-bold py-2">Comprar</a>
+                        </div>
+                    </div>
+                </div> 
+                    <!-- FIN CARRITO -->
+
+                
+
+                    <!-- SECCION REALIZAR COMPRA -->
+
+                      
+
+                        <div class="container mx-auto mt-10">
+                          <div class="flex shadow-md my-10">
+                            <div class="w-3/4 bg-white px-10 py-10">
+                              <div class="flex justify-between border-b pb-8">
+                                <h1 class="font-semibold text-2xl">Shopping Cart</h1>
+                                <h2 class="font-semibold text-2xl">3 Items</h2>
+                              </div>
+                              <div class="flex mt-10 mb-5">
+                                <h3 class="font-semibold text-gray-600 text-xs uppercase w-2/5">Product Details</h3>
+                                <h3 class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center">Quantity</h3>
+                                <h3 class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center">Price</h3>
+                                <h3 class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center">Total</h3>
+                              </div>
+                              <div class="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5">
+                                <div class="flex w-2/5"> <!-- product -->
+                                  <div class="w-20">
+                                    <img class="h-24" src="https://drive.google.com/uc?id=18KkAVkGFvaGNqPy2DIvTqmUH_nk39o3z" alt="">
+                                  </div>
+                                  <div class="flex flex-col justify-between ml-4 flex-grow">
+                                    <span class="font-bold text-sm">Iphone 6S</span>
+                                    <span class="text-red-500 text-xs">Apple</span>
+                                    <a href="#" class="font-semibold hover:text-red-500 text-gray-500 text-xs">Remove</a>
+                                  </div>
+                                </div>
+                                <div class="flex justify-center w-1/5">
+                                  <svg class="fill-current text-gray-600 w-3" viewBox="0 0 448 512"><path d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"/>
+                                  </svg>
+                      
+                                  <input class="mx-2 border text-center w-8" type="text" value="1">
+                      
+                                  <svg class="fill-current text-gray-600 w-3" viewBox="0 0 448 512">
+                                    <path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"/>
+                                  </svg>
+                                </div>
+                                <span class="text-center w-1/5 font-semibold text-sm">$400.00</span>
+                                <span class="text-center w-1/5 font-semibold text-sm">$400.00</span>
+                              </div>
+                      
+                              <div class="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5">
+                                <div class="flex w-2/5"> <!-- product -->
+                                  <div class="w-20">
+                                    <img class="h-24" src="https://drive.google.com/uc?id=10ht6a9IR3K2i1j0rHofp9-Oubl1Chraw" alt="">
+                                  </div>
+                                  <div class="flex flex-col justify-between ml-4 flex-grow">
+                                    <span class="font-bold text-sm">Xiaomi Mi 20000mAh</span>
+                                    <span class="text-red-500 text-xs">Xiaomi</span>
+                                    <a href="#" class="font-semibold hover:text-red-500 text-gray-500 text-xs">Remove</a>
+                                  </div>
+                                </div>
+                                <div class="flex justify-center w-1/5">
+                                  <svg class="fill-current text-gray-600 w-3" viewBox="0 0 448 512"><path d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"/>
+                                  </svg>
+                      
+                                  <input class="mx-2 border text-center w-8" type="text" value="1">
+                      
+                                  <svg class="fill-current text-gray-600 w-3" viewBox="0 0 448 512">
+                                    <path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"/>
+                                  </svg>
+                                </div>
+                                <span class="text-center w-1/5 font-semibold text-sm">$40.00</span>
+                                <span class="text-center w-1/5 font-semibold text-sm">$40.00</span>
+                              </div>
+                      
+                              <div class="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5">
+                                <div class="flex w-2/5"> <!-- product -->
+                                  <div class="w-20">
+                                    <img class="h-24" src="https://drive.google.com/uc?id=1vXhvO9HoljNolvAXLwtw_qX3WNZ0m75v" alt="">
+                                  </div>
+                                  <div class="flex flex-col justify-between ml-4 flex-grow">
+                                    <span class="font-bold text-sm">Airpods</span>
+                                    <span class="text-red-500 text-xs">Apple</span>
+                                    <a href="#" class="font-semibold hover:text-red-500 text-gray-500 text-xs">Remove</a>
+                                  </div>
+                                </div>
+                                <div class="flex justify-center w-1/5">
+                                  <svg class="fill-current text-gray-600 w-3" viewBox="0 0 448 512"><path d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"/>
+                                  </svg>
+                                  <input class="mx-2 border text-center w-8" type="text" value="1">
+                      
+                                  <svg class="fill-current text-gray-600 w-3" viewBox="0 0 448 512">
+                                    <path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"/>
+                                  </svg>
+                                </div>
+                                <span class="text-center w-1/5 font-semibold text-sm">$150.00</span>
+                                <span class="text-center w-1/5 font-semibold text-sm">$150.00</span>
+                              </div>
+                      
+                              <a href="#" class="flex font-semibold text-indigo-600 text-sm mt-10">
+                            
+                                <svg class="fill-current mr-2 text-indigo-600 w-4" viewBox="0 0 448 512"><path d="M134.059 296H436c6.627 0 12-5.373 12-12v-56c0-6.627-5.373-12-12-12H134.059v-46.059c0-21.382-25.851-32.09-40.971-16.971L7.029 239.029c-9.373 9.373-9.373 24.569 0 33.941l86.059 86.059c15.119 15.119 40.971 4.411 40.971-16.971V296z"/></svg>
+                                Continue Shopping
+                              </a>
+                            </div>
+                      
+                            <div id="summary" class="w-1/4 px-8 py-10">
+                              <h1 class="font-semibold text-2xl border-b pb-8">Order Summary</h1>
+                              <div class="flex justify-between mt-10 mb-5">
+                                <span class="font-semibold text-sm uppercase">Items 3</span>
+                                <span class="font-semibold text-sm">590$</span>
+                              </div>
+                              <div>
+                                <label class="font-medium inline-block mb-3 text-sm uppercase">Shipping</label>
+                                <select class="block p-2 text-gray-600 w-full text-sm">
+                                  <option>Standard shipping - $10.00</option>
+                                </select>
+                              </div>
+                              <div class="py-10">
+                                <label for="promo" class="font-semibold inline-block mb-3 text-sm uppercase">Promo Code</label>
+                                <input type="text" id="promo" placeholder="Enter your code" class="p-2 text-sm w-full">
+                              </div>
+                              <button class="bg-red-500 hover:bg-red-600 px-5 py-2 text-sm text-white uppercase">Apply</button>
+                              <div class="border-t mt-8">
+                                <div class="flex font-semibold justify-between py-6 text-sm uppercase">
+                                  <span>Total cost</span>
+                                  <span>$600</span>
+                                </div>
+                                <button class="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full">Checkout</button>
+                              </div>
+                            </div>
+                      
+                          </div>
+                        </div>
+
+                      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" src="{% static 'js/carrito.js' %}"></script> 
+
+    {% endblock %}
