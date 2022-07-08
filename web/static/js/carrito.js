@@ -45,7 +45,7 @@ const traerProductos = async() =>{
 const instanciarProductos = data =>{
     data.forEach(producto => {
 
-       //para imagen templateTarjeta.querySelector('#img-producto').setAtribute("imgDefault" , value)
+        templateTarjeta.querySelector('#img-producto').textContent = producto.foto_producto
         templateTarjeta.querySelector('#nombre-producto').textContent = producto.nombre_producto
         templateTarjeta.querySelector('#marca-producto').textContent = producto.marca_producto
         templateTarjeta.querySelector('#precio-producto').textContent = producto.precio_producto
@@ -77,6 +77,7 @@ const setCarrito = objeto => {
         nombre_producto: objeto.querySelector('#nombre-producto').textContent,
         marca_producto:  objeto.querySelector('#marca-producto').textContent,
         precio_producto: objeto.querySelector('#precio-producto').textContent,
+        foto_producto: objeto.querySelector('#img-producto').textContent,
         cantidad : 1
     }
     if (carrito.hasOwnProperty(producto.id)){
@@ -96,6 +97,8 @@ const poblarCarrito = () =>{
     Object.values(carrito).forEach(producto => {
         templateTarjetaCarrito.querySelector('#Nombre').textContent = producto.nombre_producto
         templateTarjetaCarrito.querySelector('#Marca').textContent = producto.marca_producto
+
+        templateTarjetaCarrito.querySelector('#img-carrito').textContent = producto.foto_producto
 
         templateTarjetaCarrito.querySelector('#Cantidad').textContent = producto.cantidad
         templateTarjetaCarrito.querySelector('#Precio').textContent = '$'+producto.precio_producto

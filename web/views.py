@@ -11,6 +11,14 @@ from django.http import HttpResponse
 from django.db.models import Q
 from django.contrib.admin.views.decorators import staff_member_required
 
+from rest_framework import status
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework.parsers import JSONParser 
+
+
+
+
 from web.models import Producto
 # Create your views here.
 
