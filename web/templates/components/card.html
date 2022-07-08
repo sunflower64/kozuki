@@ -1,16 +1,16 @@
 {% load static %}
 <div class=" max-w-sm bg-purple-300 shadow-md rounded-md border-gray-500 dark:border-gray-700 ">
     <a href="#">
-    <img class="shadow-md p-2 rounded-lg  "  src="{% static "img/kong-goodie-bone-dog-toy-best-chew-dog-toy.jpg"%}" width="" alt="product image">
+    <img class="shadow-md p-2 rounded-lg"  src="{{ producto.foto_producto.url }}" width="" alt="product image">
     </a>
     <div class="px-5 pb-5 ">
 
         <div class="flex flex-wrap gap-6 my-3">
             <a href="#">
-                <h5 class=" text-2xl font-semibold tracking-tight text-black ">Producto: </h5>
+                <h5 class=" text-2xl font-semibold tracking-tight text-black ">{{ producto.nombre_producto }}: </h5>
             </a>
             <div class="flex  items-center">
-                <span class="text-2xl font-bold text-gray-900 ">$0000000</span>
+                <span class="text-2xl font-bold text-gray-900 ">$ {{ producto.precio_producto }}</span>
             </div>
         </div>
         

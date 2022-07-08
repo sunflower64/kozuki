@@ -1,0 +1,19 @@
+{% load static %}
+
+<template id="tarjeta-producto"> 
+    <div  class="max-w-sm bg-white w-80 shadow-md rounded-xl transform transition duration-500 hover:scale-105 hover:shadow-2xl" >
+        <a href="#">
+            <img id="img-producto" class="shadow-lg  border-gray-700 object-cover w-full rounded-xl border-b" src="{% static "img/productos/producto5.jpg"%}" width="" height="" alt="product image">
+        </a>
+        <div class="m-3 ">
+            <h1 id="nombre-producto" class="text-2xl font-bold text-gray-800 ">  </h1>
+            <h3 id="marca-producto" class="text-gray-500 uppercase "></h3>
+            <div class="flex  items-center text-2xl text-gray-900"> $
+                <span id="precio-producto" class=" "></span>
+            </div>
+        </div>
+        <button id="btn-tarjeta" href="#" class="btn-tarjeta w-full shadow-lg rounded-b-lg text-black bg-pink-500 hover:bg-pink-600  hover:text-white focus:ring-4 focus:outline-none focus:ring-purlpe-300 font-medium text-sm px-5 py-2.5 text-center  ">Agregar al carrito</button>  
+    </div>
+</template>
+{% block content %}
+{% endblock %}

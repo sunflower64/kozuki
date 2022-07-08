@@ -3,11 +3,8 @@
 
 {% block content %}
 
-
-<div class="flex justify-between items-center">
     <h1 class="px-2 py-4 text-2xl"> Lista de productos </h1>
-    <a class="text-xl underline mx-4" href="{% url 'crear_producto' %}"> Crear Producto</a>
-</div>
+
 
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg px-2">
 <table class="w-full text-sm text-left text-gray-500">
@@ -43,6 +40,11 @@
 </div>
 
 
+{% for producto in productos %}
+
+<h1>ID: {{producto.id}}  </h1>
+<h1>NOMBRE: {{producto.nombre}} </h1>
+{% endfor %}
 
 
 {% endblock %}

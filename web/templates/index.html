@@ -1,5 +1,8 @@
 {% extends 'base.html' %}{% load static %}
 {% block content %}
+    <!-- logout -->
+    <!-- <p><a href=""></a></p> -->
+    <h1>Bienvenido, {{request.user.first_name}}</h1>
         <!------------------------------------------------------------------------------ MUNDOS -->
         <div class="flex flex-col lg:flex-row place-content-around pt-2">
             <div class=" w-full lg:w-1/2 p-8 transform transition duration-500 hover:scale-95">

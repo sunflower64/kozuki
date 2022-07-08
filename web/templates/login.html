@@ -6,8 +6,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js" > </script>
 
-    <script src="js/validacion_jquery.js"></script>
-
+  <script src="js/validacion_jquery.js"></script> 
     <script>
         
 //        $(document).ready(function(){
@@ -172,7 +171,7 @@
                     
                     <!----------------------- COMIENZO FORM -->
                     <form name="form_ingreso" id="form_ingreso" action="" method="POST" enctype="multipart/form-data"  class="w-full max-w-lg  "> 
-
+                        {% csrf_token %} 
                         <div class="text-base text-2xl  text-center w-full my-5">Inicia Sesion</div>
                             <hr class="border-t border-gray-300 mb-6">
                         
@@ -186,7 +185,7 @@
                                 </label>
 
                                 <input class="rounded-md shadow-lg appearance-none block w-full text-gray-700 border-b border-pink-300  py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-gray-100"
-                                id="ing_email" name="ing_email" type="email" placeholder="correo@mail.com">
+                                id="email" name="email" type="email" placeholder="correo@mail.com">
                                 <p id="alerta_email" class="form_alerta text-red-500 text-xs italic"></p>
                             </div>
 
@@ -201,7 +200,7 @@
                                 Contraseña
                                 </label>
                                 <input class="rounded-md shadow-lg appearance-none block w-full  text-gray-700 border-b border-gray-500  py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-gray-100" 
-                                id="ing_contraseña" name="ing_contraseña" type="password" placeholder="*****************">
+                                id="password" name="password" type="password" placeholder="*****************">
                                 <p class="alerta_ text-red-600 text-xs italic"></p>
                             </div>              
                         </div>
@@ -212,6 +211,8 @@
                                     hover:bg-gray-700 focus:outline-none focus:shadow-outline shadow-lg bg-gray-400" type="submit">
                                     Acceder
                         </button>
+
+                        <input class="bg-red-800" type="submit" value="Guardar"/>
 
                         <p>No tienes Cuenta? <button type="reset" class="activar_registro pb-4 text-base text-purple-700"> Registrate aqui</button></p>
 
