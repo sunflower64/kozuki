@@ -9,7 +9,7 @@ from django.views.decorators.csrf import csrf_exempt
 from .serializers import ProductoSerializer
 
 # Create your views here.
-# api listar productos + carrito de compras
+# api listar productos 
 @csrf_exempt
 @api_view(['GET'])
 def api_traer_productos(request):

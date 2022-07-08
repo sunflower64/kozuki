@@ -16,8 +16,7 @@ urlpatterns = [
     path('producto/editar/guardar/<int:id>', views.guardar_edicion, name="guardar_edicion"),
 
 
-
-
     path('Productos/', views.productos, name="productos"),
+    path('compra/', views.compra, name="compra"),
 
     ]

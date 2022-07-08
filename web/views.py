@@ -4,7 +4,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.parsers import JSONParser 
 from django.views.decorators.csrf import csrf_exempt
-from .serializers import ProductoSerializer
+
 
 from re import template
 from django.views.generic import TemplateView
@@ -17,7 +17,11 @@ login = TemplateView.as_view(template_name="login.html")
 categoriaperro = TemplateView.as_view(template_name="cat_perro.html")
 categoriagato = TemplateView.as_view(template_name="cat_gato.html")
 
+
 productos = TemplateView.as_view(template_name="principal_productos.html")
+compra = TemplateView.as_view(template_name="compra.html")
+
+
 #CRUD
 crud = TemplateView.as_view(template_name='productos_crud.html')
 crear_producto = TemplateView.as_view(template_name="crear_producto.html")
