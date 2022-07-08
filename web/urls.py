@@ -17,8 +17,10 @@ urlpatterns = [
     path('borrar_producto/<int:id>', views.borrar_producto, name="borrar_producto"),
     path('producto/<int:id>', views.ver_producto, name="producto"),
     path('producto/editar/<int:id>', views.editar_producto, name="editar"),
+    path('Productos/', views.Productos, name="Productos"),
     path('producto/editar/guardar/<int:id>', views.guardar_edicion, name="guardar_edicion"),
-    path('oauth/', include('social_django.urls', namespace='social')),
+    #path('oauth/', include('social_django.urls', namespace='social')),
+
     ]
 
 if settings.DEBUG:

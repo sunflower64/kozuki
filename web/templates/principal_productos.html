@@ -1,0 +1,286 @@
+{% extends 'base.html' %}{% load static %} 
+
+{% block content %}
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script> 
+
+        // Solicitud GET (Request).
+    fetch('https://catfact.ninja/fact?max_length=80')
+    // Exito
+    .then(response => response.json())  // convertir a json
+    .then(data => mostrarData(data))    //imprimir los datos en la consola
+    .catch(err => console.log('Solicitud fallida', err)); // Capturar errores
+    
+    const mostrarData = (data) =>{
+    console.log(data)
+    let body = ''
+    body = `<h2>${data.fact}</h2>`
+    document.getElementById('fact').innerHTML = body
+    }
+    </script> 
+    
+
+
+
+
+
+<!------------------------------------------------------------ TITULO DE LA SECCION><-->    <!---------------------------------------------------------------BLOQUE DE BUSCADOR CON FONDO  ><-->
+                <div class="relative bg-pink-300">
+                    <!-- consumo de API de facts -->
+
+                    <div class="text-base sm:text-xl md:text-2xl bg-purple-200 text-center pt-5 pb-2 rounded-md shadow-lg">
+                        <h2 id="fact" class=" text-bold animate-bounce">
+                        
+                        </h2>
+                    </div>
+                    <div class="container m-auto px-6 pt-32 md:px-12 lg:pt-[4.8rem] lg:px-7">
+                        <div class="flex items-center flex-wrap px-2 md:px-0">
+                            <div class="relative lg:w-6/12 lg:py-24 xl:py-32">
+                                <h1 class="font-bold text-4xl text-yellow-900 md:text-5xl lg:w-10/12">Estas comprando para Gatitos </h1>
+                                <form action="" class="w-full mt-12">
+                                    <div class="relative flex p-1 rounded-full bg-white border border-yellow-200 shadow-md md:p-2">
+                                        <select class="hidden p-3 rounded-full bg-transparent md:block md:p-4" name="domain" id="domain">
+                                            <option value="design">Juguetes indoor</option>
+                                            <option value="development">Rascadores</option>
+                                            <option value="marketing">Camas</option>
+                                        </select>
+                                        <input placeholder="Ejm. hierba gatuna" class="w-full p-4 rounded-full" type="text">
+                                        <button type="button" title="Compra ahora" class="ml-auto py-3 px-6 rounded-full text-center transition bg-gradient-to-b from-pink-300 to-purple-400 hover:to-red-300 active:from-purple-700 focus:from-pink-400 md:px-12">
+                                            <span class="hidden text-yellow-900 font-semibold md:block">
+                buscar
+                                            </span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 mx-auto text-yellow-900 md:hidden" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </form>
+                                <p class="mt-8  text-2xl text-gray-700 lg:w-20/12">Regalonea a tus amigos peludos!</p>
+                            </div>
+                            <div class="ml-auto -mb-24 lg:-mb-56 lg:w-6/12">
+                                <img src="{% static "img/gatito.png" %}" class="relative w-scren" alt="Perritos" loading="lazy" width="3500"  height="4500">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+<!-----------------------------------------------------------------BLOQUE BANNER  ><-->
+            <div class="col-xs" >    
+                <div class="h-100 flex justify-center items-center" >
+                    <card class="grid grid-cols-12 max-w-5xl mx-8 rounded-xl bg-pink-800"> 
+                        <div class="col-span-4">
+                            <h2 class="font-bold text-3xl text-white ml-10 mt-8"> 
+                                Productos en oferta
+                            </h2>
+                            <p class="font-light text-white text-sm ml-10 mt-5">
+                                
+                            </p>
+                                        <button class="text-white font-semibold ml-10 mt-5 mb-8 group ">
+                                Revisa los descuentos en todo Alimento
+                                <svg xmlns="http://www.w3.org/2000/svg" class="inline-block h-6 w-6 group-hover:translate-x-2 transition delay-100 transition-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                </svg>
+                            </button>       
+                        </div>
+                            <div class="col-span-2 relative">
+                                <img src=""  class="absolute bottom-0 right-0"/>
+                            </div>
+                    </card>
+
+                </div>           
+            </div>
+
+            <br>
+<!------------------------------------------------------- BLOQUE DE  CATEGORIAS-DESPLEGABLE ?-     Y PRODUCTOS/PRECIOS ><-->
+
+            <div class="" id="div_categorias">
+
+                <nav class=" bg-pink-700 border-white-200 px-2 sm:px-4 py-2.5 rounded">
+
+                    <div class=" container flex flex-wrap justify-between mx-screen ">
+                        <div class="flex sm:block md:hidden mx-8 p-4 inline-flex">
+                            <h1 class="text-white text-2xl  " >CATEGORIAS </h1>
+                        </div>
+                        
+                        <button data-collapse-toggle="categorias" type="button" class="inline-flex items-center p-4 ml-3 text-xl text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="categorias" aria-expanded="false">
+                            <svg class="w-8 h-8" fill="white" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
+                            <svg class="hidden w-6 h-6" fill="white" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                        </button>
+                        <div class="hidden w-full md:block md:w-auto " id="categorias">
+                                <ul class="w-screen text-center flex flex-wrap flex-col my-4 md:flex-row md:space-x-8  md:text-xl  ">               
+                                    <li class="">    
+                                        <a href="#" class="w-full block py-2 pr-4 pl-3 text-white hover:bg-purple-100 md:hover:bg-purple-300 md:border-0 md:hover:text-white-700 md:p-0"  >Alimentos</a>
+                                    </li>
+                                    <li class="">    
+                                        <a href="#" class="w-full block py-2 pr-4 pl-3 text-white hover:bg-purple-100 md:hover:bg-purple-300 md:border-0 md:hover:text-white-700 md:p-0"  >Aseo</a>
+                                    </li>
+                                    <li class="">    
+                                        <a href="#" class="w-full block py-2 pr-4 pl-3 text-white hover:bg-purple-100 md:hover:bg-purple-300 md:border-0 md:hover:text-white-700 md:p-0"  >Bocadillos</a>
+                                    </li>
+                                    <li class="">    
+                                        <a href="#" class="w-full block py-2 pr-4 pl-3 text-white hover:bg-purple-100 md:hover:bg-purple-300 md:border-0 md:hover:text-white-700 md:p-0"  >Juguetes terapeuticos</a>
+                                    </li>
+                                    <li class="">    
+                                        <a href="#" class="w-full block py-2 pr-4 pl-3 text-white hover:bg-purple-100 md:hover:bg-purple-300 md:border-0 md:hover:text-white-700 md:p-0"  >Medicinas</a>
+                                    </li>
+                                    <li class="">    
+                                        <a href="#" class="w-full block py-2 pr-4 pl-3 text-white hover:bg-purple-100 md:hover:bg-purple-300 md:border-0 md:hover:text-white-700 md:p-0"  >Collares</a>
+                                    </li>
+                                    <li class="">    
+                                        <a href="#" class="w-full block py-2 pr-4 pl-3 text-white hover:bg-purple-100 md:hover:bg-purple-300 md:border-0 md:hover:text-white-700 md:p-0"  >Arneses</a>
+                                    </li>
+                                    <li class="">    
+                                        <a href="#" class="w-full block py-2 pr-4 pl-3 text-white hover:bg-purple-100 md:hover:bg-purple-300 md:border-0 md:hover:text-white-700 md:p-0"  >Camas</a>
+                                    </li>
+                                    <li class="">    
+                                        <a href="#" class="w-full block py-2 pr-4 pl-3 text-white hover:bg-purple-100 md:hover:bg-purple-300 md:border-0 md:hover:text-white-700 md:p-0"  >Disfraces</a>
+                                    </li>
+                                    <li class="">    
+                                        <a href="#" class="w-full block py-2 pr-4 pl-3 text-white hover:bg-purple-100 md:hover:bg-purple-300 md:border-0 md:hover:text-white-700 md:p-0"  >Peluqueria</a>
+                                    </li>
+                                    <li class="">    
+                                        <a href="#" class="w-full block py-2 pr-4 pl-3 text-white hover:bg-purple-100 md:hover:bg-purple-300 md:border-0 md:hover:text-white-700 md:p-0"  >Jaulas de transporte</a>
+                                    </li>
+                                    <li class="">    
+                                        <a href="#" class="w-full block py-2 pr-4 pl-3 text-white hover:bg-purple-100 md:hover:bg-purple-300 md:border-0 md:hover:text-white-700 md:p-0"  >Estambre</a>
+                                    </li>
+
+                                </ul>
+                        </div>
+                    </div>
+                </nav>
+    
+            </div>
+<!------------------------------------------------------------------------------------- PRODUCTOS-->
+            <div class="grid flex flex-wrap justify-center grid-cols-12 my-10 ">
+                <h1> ola</h1>
+
+                <!------------------------------------------------- PRODUCTOS-->
+                <div id="tarjetas" class=" flex flex-wrap   col-span-12 grid-flow-row justify-center flex-shrink-1  gap-10">
+
+
+                </div> <!--TERMINO PRODUCTOS-->
+            </div>
+    <!--TERMINO PRODUCTOS-->
+
+
+            <!-- SECCION REALIZAR COMPRA -->
+  
+                            <div class="container mx-auto mt-10 shadow-lg">
+                                <div class="flex shadow-md my-10">
+                                  <div class="w-3/4 bg-white px-10 py-10">
+                                    <div class="flex justify-between border-b pb-8">
+                                      <h1 class="font-semibold text-2xl"> Carrito de compras</h1>
+                                      <h2 class="font-semibold text-2xl">Productos</h2>
+                                    </div>
+                                    <div class="flex mt-10 mb-5">
+                                      <h3 class="font-semibold text-gray-600 text-xs uppercase w-2/5">Detalles del producto </h3>
+                                      <h3 class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center">Cantidad</h3>
+                                      <h3 class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center">Precio</h3>
+                                      <h3 class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center">Total</h3>
+                                    </div>
+                                    <div id="contenedorTarjetaCarrito" class="mb-56">
+                                                                    <!-- PRODUCTO -->
+                                      <template id="templateTarjetaCarrito" >
+                                          <!-- PRODUCTO -->
+                                        <div class="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5">
+                                          <div class="flex w-2/5"> 
+                                            <div class="w-20">
+                                              <img class="h-24" src="https://drive.google.com/uc?id=18KkAVkGFvaGNqPy2DIvTqmUH_nk39o3z" alt="">
+                                            </div>
+                                            <div class="flex flex-col justify-between ml-4 flex-grow">
+                                              <span id="Nombre" class="font-bold text-sm">Iphone 6S</span>
+                                              <span id="Marca" class="text-red-500 text-xs">Apple</span>
+                                              <a href="#" class="font-semibold hover:text-red-500 text-gray-500 text-xs">Remove</a>
+                                            </div>
+                                          </div>
+                                          <div class="flex justify-center w-1/5">
+                                            <!-- cantidad  -->
+                                            <p id="Cantidad" class="mx-2 text-center w-8"></p>
+
+                                          </div>
+                                          <span id="Precio" class="text-center w-1/5 font-semibold text-sm">$400.00</span>
+                                          <span id="Total" class="text-center w-1/5 font-semibold text-sm">$400.00</span>
+                                        </div>
+                                      </template>
+                                    </div>
+        
+                                    <a href="#" class="flex font-semibold text-indigo-600 text-sm mt-10">
+                                  
+                                      <svg class="fill-current mr-2 text-indigo-600 w-4" viewBox="0 0 448 512"><path d="M134.059 296H436c6.627 0 12-5.373 12-12v-56c0-6.627-5.373-12-12-12H134.059v-46.059c0-21.382-25.851-32.09-40.971-16.971L7.029 239.029c-9.373 9.373-9.373 24.569 0 33.941l86.059 86.059c15.119 15.119 40.971 4.411 40.971-16.971V296z"/></svg>
+                                      Volver a Productos
+                                    </a>
+                                  </div>
+                                  <!-- REALIZAR COMPRA  -->
+                                  
+                                  <div id="realizarCompra" class="w-1/4 px-8 py-10">
+                                    
+                                    <h1 class="font-semibold text-2xl border-b pb-8"> Detalle </h1>
+                                    <template id="comprar"></template>
+                                    <div class="flex justify-between mt-10 mb-5">
+                                      <span  class="font-semibold text-xl uppercase">cantidad productos</span>
+                                      <span id="cantidad-total" class="font-semibold text-sm"></span>
+                                    </div>
+        
+                                    <div class="py-2">
+        
+                                    </div>
+        
+                                    <div class="border-t mt-8">
+                                      <div class="flex font-semibold justify-between py-6 text-md uppercase">
+                                        <span>Total</span>
+                                        <span id="precio-total"></span>
+                                      </div>
+                                      <button data-modal-toggle="defaultModal" id="btn-pagar" href="#" class=" w-full shadow-lg rounded-lg text-black bg-pink-500 hover:bg-pink-600 hover:text-white focus:ring-4 focus:outline-none focus:ring-purlpe-300 font-medium text-sm px-5 py-2.5 text-center  ">Pagar</button>
+    
+                                                <!--  modal -->
+                                                <div id="defaultModal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full justify-center items-center">
+                                                    <div class="relative p-4 w-full max-w-2xl h-full md:h-auto">
+
+                                                        <!-- Modal content -->                     
+                                                        <div class="relative bg-white rounded-md shadow bg-white">
+
+                                                            <div class="flex justify-between items-start p-4 rounded-t border-b dark:border-gray-600">
+                                                                <h3 class="text-xl font-semibold text-black">
+                                                                    Atencion 
+                                                                </h3>
+                                                                <button type="button" class="text-black bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="defaultModal">
+                                                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>  
+                                                                </button>
+                                                            </div>
+  
+                                                            <div class="p-6 space-y-6">
+                                                                <p class="text-base leading-relaxed text-black">
+                                                                   Esta a punto de realizar la compra de sus productos
+                                                                </p>
+                                                                <p class="text-base leading-relaxed text-black">
+                                                                    ¿Desea llevar a cabo esta operacion?
+                                                                </p>
+                                                            </div>
+   
+                                                            <div class="flex items-center p-6 space-x-2 rounded-b border-t border-gray-200 dark:border-gray-600">
+                                                                <button id="" data-modal-toggle="defaultModal" type="button" class=" btn-vaciar1 text-white bg-pink-700  focus:ring-4 focus:outline-none  font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-pink-600  dark:focus:ring-blue-800">Acepto</button>
+                                                                <button data-modal-toggle="defaultModal" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none  rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">volver atras</button>
+                                                            </div>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+  
+                                    </div>
+                                    <div class="border-t my-7"></div>
+                                    <div class=" my-10 ">
+                                      <button id="" href="#" class=" btn-vaciar2 w-full shadow-lg rounded-sm  text-black bg-gray-500 hover:bg-gray-600 hover:text-white focus:ring-4 focus:outline-none focus:ring-red-600 font-medium text-sm px-5 py-2.5 text-center  ">vaciar carrito</button>
+                                    </div>
+                                  </div>
+                            
+                                </div>
+                              </div>
+    
+
+
+
+<script type="text/javascript" src="{% static 'js/carrito.js' %}"></script> 
+{% endblock %}

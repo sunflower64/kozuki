@@ -16,6 +16,7 @@ from web.models import Producto
 
 home = TemplateView.as_view(template_name="index.html")
 tarjeta = TemplateView.as_view(template_name="tarjeta.html")
+Productos = TemplateView.as_view(template_name="principal_productos.html")
 #login = TemplateView.as_view(template_name="login.html")
 categoriaperro = TemplateView.as_view(template_name="cat_perro.html")
 categoriagato = TemplateView.as_view(template_name="cat_gato.html")
@@ -24,7 +25,9 @@ crud = TemplateView.as_view(template_name='productos_crud.html')
 #crear_producto = TemplateView.as_view(template_name="crear_producto.html")
 ver_producto = TemplateView.as_view(template_name="producto.html")
 editar_producto = TemplateView.as_view(template_name="editar.html")
+
 @staff_member_required
+
 def crear_producto(request):
 
     if request.method == 'POST':
