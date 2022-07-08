@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Registro</h1>
+
+<form method="POST" action="">
+    {% csrf_token %}
+
+    {{form_registro.first_name}}
+    {{form_registro.last_name}}
+   {{form_registro.username}}
+   {{form_registro.password1}}
+   {{form_registro.password2}}
+    <input type="submit" value="registro" />
+</form>
+{% endblock %}
